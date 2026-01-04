@@ -43,4 +43,4 @@ if atm.giris(hesap, "1234"):
     print(f"Bakiye: {atm.hesap.bakiye}")
     atm.cek(200)
     print(f"Bakiye: {atm.hesap.bakiye}")
-
+    
