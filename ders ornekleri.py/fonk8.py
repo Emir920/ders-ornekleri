@@ -1,7 +1,21 @@
 class Hesap:
     def __init__(self, sifre, bakiye=0):
         self.sifre = sifre
-        self.bakiye = bakiye
+        self.__bakiye = bakiye
+
+    @property
+    def bakiye(self):
+        return self.__bakiye
+
+    def yatir(self, miktar):
+        if miktar > 0:
+            self.__bakiye += miktar
+
+    def cek(self, miktar):
+        if 0 < miktar <= self.__bakiye:
+            self.__bakiye -= miktar
+            return True
+        return False
 
 
 class ATM:
@@ -15,10 +29,10 @@ class ATM:
         return False
     
     def yatir(self, para):
-        self.hesap.bakiye += para
+        self.hesap.yatir(para)
     
     def cek(self, para):
-        self.hesap.bakiye -= para
+        return self.hesap.cek(para)
 
 hesap = Hesap("1234", 1000)
 atm = ATM()
